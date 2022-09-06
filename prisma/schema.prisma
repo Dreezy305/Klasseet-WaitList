@@ -10,12 +10,17 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+enum Role {
+  STUDENT
+  INSTRUCTOR
+}
+
 model WaitList {
-  id        String   @id @default(auto()) @map("_id") @db.ObjectId
-  createdAt DateTime @default(now())
-  email String
-  firstName String
-  lastName  String
-  
+  id         String   @id @default(auto()) @map("_id") @db.ObjectId
+  createdAt  DateTime @default(now())
+  email      String  
+  fullName   String 
+  country    String
+  role       Role 
   @@unique([email], map: "emailShouldBeUnique")
 }
