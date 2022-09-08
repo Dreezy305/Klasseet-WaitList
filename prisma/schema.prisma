@@ -22,5 +22,7 @@ model WaitList {
   fullName   String 
   country    String
   role       Role 
+
   @@unique([email], map: "emailShouldBeUnique")
 }
+
